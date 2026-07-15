@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>林灿阳 · 具身智能投资 × 技术翻译</title>
+<style>
+  :root{
+    --ink:#1a1a1a;
+    --sub:#6b6b6b;
+    --line:#ececec;
+    --accent:#2f5bea;
+    --accent-soft:#eef2fe;
+    --bg:#ffffff;
+    --card-shadow:0 1px 2px rgba(0,0,0,.04),0 12px 40px rgba(0,0,0,.06);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    padding:48px 20px;
+    display:flex;
+    justify-content:center;
+  }
+  .card{
+    width:100%;
+    max-width:880px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:20px;
+    box-shadow:var(--card-shadow);
+    overflow:hidden;
+  }
+
+  /* ---------- Header ---------- */
+  .hero{
+    display:flex;
+    gap:32px;
+    padding:44px 44px 36px;
+    align-items:center;
+    border-bottom:1px solid var(--line);
+  }
+  .photo-wrap{
+    flex-shrink:0;
+    width:132px;
+    height:176px;
+    border-radius:14px;
+    overflow:hidden;
+    background:#f4f4f4;
+    border:1px solid var(--line);
+  }
+  .photo-wrap img{width:100%;height:100%;object-fit:cover;display:block}
+  .intro{flex:1;min-width:0}
+  .name{font-size:34px;font-weight:700;letter-spacing:.5px}
+  .name .en{font-size:16px;font-weight:500;color:var(--sub);margin-left:12px;letter-spacing:1px}
+  .headline{
+    margin-top:12px;
+    font-size:18px;
+    font-weight:600;
+    color:var(--accent);
+    line-height:1.5;
+  }
+  .tagline{margin-top:10px;font-size:14.5px;color:var(--sub);max-width:520px}
+  .tags{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
+  .tag{
+    font-size:12.5px;
+    padding:5px 12px;
+    border-radius:999px;
+    background:var(--accent-soft);
+    color:var(--accent);
+    font-weight:500;
+  }
+  .tag.alt{background:#f4f4f4;color:#555}
+
+  /* ---------- Section ---------- */
+  section{padding:34px 44px}
+  section+section{border-top:1px solid var(--line)}
+  .sec-title{
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:2px;
+    color:var(--sub);
+    text-transform:uppercase;
+    margin-bottom:22px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .sec-title::before{content:"";width:20px;height:2px;background:var(--accent);border-radius:2px}
+
+  /* ---------- Research ---------- */
+  .research{display:flex;flex-direction:column;gap:22px}
+  .item{display:flex;gap:16px}
+  .item .no{
+    flex-shrink:0;
+    width:30px;height:30px;
+    border-radius:8px;
+    background:var(--accent-soft);
+    color:var(--accent);
+    font-weight:700;font-size:14px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .item h3{font-size:16px;font-weight:650;margin-bottom:4px}
+  .item h3 .badge{
+    font-size:11px;font-weight:600;color:var(--accent);
+    background:var(--accent-soft);padding:2px 8px;border-radius:6px;
+    margin-left:8px;vertical-align:middle;
+  }
+  .item p{font-size:14px;color:var(--sub);line-height:1.6}
+
+  /* ---------- Topics ---------- */
+  .topics{display:flex;flex-direction:column;gap:20px}
+  .topic-group{display:flex;gap:14px;align-items:flex-start}
+  .topic-group .cat{
+    flex-shrink:0;width:96px;
+    font-size:13.5px;font-weight:650;color:var(--ink);
+    padding-top:3px;line-height:1.4;
+  }
+  .topic-group .cat span{display:block;font-size:11px;color:#aaa;font-weight:500;letter-spacing:.5px}
+  .chips{display:flex;flex-wrap:wrap;gap:7px;flex:1}
+  .chip{
+    font-size:12.5px;padding:5px 11px;border-radius:8px;
+    background:#f6f7f9;color:#444;border:1px solid #eee;
+    line-height:1.3;
+  }
+  .chip b{color:var(--accent);font-weight:600}
+  .topics-note{margin-top:20px;font-size:12.5px;color:#aaa;line-height:1.6}
+
+  /* ---------- Contact ---------- */
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px 28px;
+  }
+  .contact-row.full{grid-column:1 / -1}
+  .contact-row{
+    display:flex;align-items:center;gap:14px;
+    font-size:15px;
+  }
+  .contact-row .ic{
+    width:36px;height:36px;flex-shrink:0;
+    border-radius:9px;background:#f5f6f8;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--accent);
+  }
+  .contact-row>div:last-child{min-width:0;flex:1}
+  .contact-row .lbl{font-size:11px;color:#999;letter-spacing:.5px;margin-bottom:1px}
+  .contact-row .val{font-weight:550;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:15px}
+  .placeholder-text{color:#bbb;font-weight:400;font-style:italic}
+
+  /* ---------- QR ---------- */
+  .qr-section .sec-title{justify-content:center}
+  .qr-section .sec-title::before{display:none}
+  .qr-grid{display:flex;gap:32px;flex-wrap:wrap;justify-content:center}
+  .qr-box{text-align:center}
+  .qr-img{
+    width:140px;height:140px;
+    border:1.5px dashed #d6d6d6;
+    border-radius:14px;
+    background:#fafafa;
+    display:flex;align-items:center;justify-content:center;
+    color:#bbb;font-size:12px;line-height:1.5;
+    overflow:hidden;
+  }
+  .qr-img img{width:100%;height:100%;object-fit:contain;display:block}
+  .qr-box .qr-label{margin-top:12px;font-size:13.5px;font-weight:600}
+  .qr-box .qr-sub{font-size:12px;color:var(--sub);margin-top:2px}
+
+  footer{
+    padding:22px 44px 30px;
+    border-top:1px solid var(--line);
+    font-size:12px;color:#aaa;text-align:center;letter-spacing:.5px;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:600px){
+    body{padding:20px 12px}
+    .hero{flex-direction:column;text-align:center;padding:34px 24px 28px;gap:22px}
+    .tags{justify-content:center}
+    .tagline{margin-left:auto;margin-right:auto}
+    section{padding:28px 24px}
+    .name{font-size:28px}
+    .headline{font-size:16px}
+    .contact-grid{grid-template-columns:1fr}
+    .topic-group{flex-direction:column;gap:8px}
+    .topic-group .cat{width:auto}
+    .qr-grid{justify-content:center;gap:24px}
+    footer{padding:20px 24px}
+  }
+</style>
+</head>
+<body>
+<main class="card">
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="photo-wrap">
+      <img src="assets/照片.jpg" alt="林璨阳 证件照">
+    </div>
+    <div class="intro">
+      <div class="name">林璨阳<span class="en">LIN CANYANG</span></div>
+      <div class="headline">具身智能投资人 · 技术与资本的翻译者</div>
+      <p class="tagline">
+        听得懂物理AI技术,也能给它估值。在一堆号称"造霸天虎"的团队里,
+        识别谁真有能拧螺丝的手——用技术判断力做投资决策的透视镜。
+      </p>
+      <div class="tags">
+        <span class="tag">具身智能</span>
+        <span class="tag">早期投资</span>
+        <span class="tag alt">图神经网络</span>
+        <span class="tag alt">财务舞弊检测</span>
+        <span class="tag alt">半导体光子学</span>
+        <span class="tag alt">航空航天硬科技</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Research -->
+  <section>
+    <div class="sec-title">主要研究方向 · Research Focus</div>
+    <div class="research">
+
+      <div class="item">
+        <div class="no">01</div>
+        <div>
+          <h3>具身智能投资主线<span class="badge">核心</span></h3>
+          <p>
+            投"超越人类"而非"替代人类"——聚焦非人形 × 航空航天 × 极端环境
+            (无人机、水下ROV、核电/深海/太空特种机器人)。关注"场景 × 数据飞轮"
+            闭环,而非机器人是否长得像人。以真机在岗率、复购率穿透赛道叙事。
+          </p>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="no">02</div>
+        <div>
+          <h3>图神经网络 × 财务舞弊检测</h3>
+          <p>
+            基于 FiGraph 真实上市公司关系网络,把"同配/异配解耦"从静态扩展到
+            动态 · 图文融合 · 可解释,让解耦因素对齐审计红旗信号。目标为
+            CS机器学习顶刊 × 会计交叉研究,GraphSAGE 基线已跑通。
+          </p>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="no">03</div>
+        <div>
+          <h3>半导体光子学与前沿硬科技</h3>
+          <p>
+            梳理 DFB 激光器、III-V/硅光子异质集成、共封装光学(CPO)到
+            5G/6G 毫米波的技术谱系,建立对"卖铲子"型硬科技赛道的第一性判断力。
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Topics -->
+  <section>
+    <div class="sec-title">近期研究与项目 · 可交流的话题</div>
+    <div class="topics">
+
+      <div class="topic-group">
+        <div class="cat">具身智能<span>EMBODIED AI</span></div>
+        <div class="chips">
+          <span class="chip">接触式物理AI · 7篇论文精读</span>
+          <span class="chip">仿真 vs 真机 sim-to-real</span>
+          <span class="chip"><b>特斯拉 FSD 与世界模型</b></span>
+          <span class="chip">具身智能数据采集与飞轮</span>
+          <span class="chip">四家人形机器人公司模拟尽调</span>
+          <span class="chip">低空经济产业链拆解</span>
+        </div>
+      </div>
+
+      <div class="topic-group">
+        <div class="cat">硬科技<span>DEEP TECH</span></div>
+        <div class="chips">
+          <span class="chip"><b>SpaceX</b> IPO 与 Starshield 深度分析</span>
+          <span class="chip">星载高功率射频系统</span>
+          <span class="chip">半导体光子学 / CPO 共封装光学</span>
+          <span class="chip">太赫兹 &amp; 5G/6G 通感一体</span>
+          <span class="chip">英伟达年报 · AMD vs NVIDIA</span>
+          <span class="chip">商业航天合金材料</span>
+        </div>
+      </div>
+
+      <div class="topic-group">
+        <div class="cat">AI 前沿<span>FRONTIER</span></div>
+        <div class="chips">
+          <span class="chip">Transformer 原论文精读</span>
+          <span class="chip"><b>DeepSeek 梁文锋研究成果综述</b></span>
+          <span class="chip">Situational Awareness 精读</span>
+          <span class="chip">图神经网络 · 财务舞弊检测</span>
+          <span class="chip">PML 概率机器学习精读</span>
+        </div>
+      </div>
+
+      <div class="topic-group">
+        <div class="cat">投资研究<span>INVESTING</span></div>
+        <div class="chips">
+          <span class="chip">大类资产配置 · 滞胀策略</span>
+          <span class="chip">光伏银浆 / 银包铜粉</span>
+          <span class="chip">创新药 ASCO 前瞻</span>
+          <span class="chip">金风科技尽职调查</span>
+          <span class="chip">地缘政治与原油市场</span>
+          <span class="chip">量化交易系统 &amp; 回测</span>
+        </div>
+      </div>
+
+    </div>
+    <p class="topics-note">以上多为我亲手整理的研究综述、尽调笔记与代码原型。欢迎就任一话题深聊。</p>
+  </section>
+
+  <!-- Contact -->
+  <section>
+    <div class="sec-title">联系方式 · Contact</div>
+    <div class="contact-grid">
+
+      <div class="contact-row">
+        <div class="ic">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <div>
+          <div class="lbl">电话 PHONE</div>
+          <div class="val">176 1169 5882</div>
+        </div>
+      </div>
+
+      <div class="contact-row">
+        <div class="ic">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg>
+        </div>
+        <div>
+          <div class="lbl">平台 PLATFORM</div>
+          <div class="val">北航 · 航空航天 × 具身智能方向</div>
+        </div>
+      </div>
+
+      <div class="contact-row full">
+        <div class="ic">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        </div>
+        <div>
+          <div class="lbl">邮箱 EMAIL</div>
+          <div class="val">jennifer.lincanyang@gmail.com</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- QR -->
+  <section class="qr-section">
+    <div class="sec-title">关注我 · Follow</div>
+    <div class="qr-grid">
+      <div class="qr-box">
+        <div class="qr-img">
+          <img src="assets/微信二维码.jpg" alt="微信二维码">
+        </div>
+        <div class="qr-label">微信</div>
+        <div class="qr-sub">扫码添加好友</div>
+      </div>
+      <div class="qr-box">
+        <div class="qr-img">
+          <img src="assets/微信公众号二维码.jpg" alt="微信公众号二维码">
+        </div>
+        <div class="qr-label">微信公众号</div>
+        <div class="qr-sub">扫码关注</div>
+      </div>
+      <div class="qr-box">
+        <div class="qr-img">
+          <img src="assets/小红书二维码.jpg" alt="小红书二维码">
+        </div>
+        <div class="qr-label">小红书</div>
+        <div class="qr-sub">@吴思珩 · 扫码关注</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>WAIC 2026 · 林璨阳 · 技术看得懂,生意算得清</footer>
+
+</main>
+</body>
+</html>
